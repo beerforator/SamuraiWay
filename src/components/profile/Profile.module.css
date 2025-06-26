@@ -1,0 +1,41 @@
+.main_page {
+  grid-area: m;
+
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.page_background {
+  width: 100%;
+  height: 300px;
+
+  object-fit: cover;
+  z-index: 10;
+  background-color: aqua;
+}
+
+.profile {
+  width: 100%;
+  height: fit-content;
+
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+}
+
+.profile_avatar {
+  width: 150px;
+  height: 150px;
+
+  box-shadow: 0 0 2px black;
+  /* background-color: aqua; */
+}
+
+.profile_info {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

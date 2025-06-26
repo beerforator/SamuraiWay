@@ -1,0 +1,16 @@
+.aside_nav {
+  grid-area: a;
+  background-color: rgb(103, 90, 114);
+  
+  padding: 20px 10px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.sector_nav {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}

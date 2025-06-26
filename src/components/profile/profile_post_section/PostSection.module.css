@@ -1,0 +1,23 @@
+.page_posts {
+  width: 100%;
+  height: fit-content;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.post_form {
+  margin: 0 auto;
+  width: 80%;
+  height: 200px;
+
+  background-color: rgb(12, 45, 75);
+}
+
+.post_list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
