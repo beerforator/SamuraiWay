@@ -13,6 +13,7 @@ body {
   max-width: 1300px;
 
   font-family: monospace;
+  font-size: 16px;
   color: black;
 
   padding: 20px;
@@ -28,6 +29,12 @@ body {
   grid-template-rows: 60px 1fr;
   grid-template-columns: 1fr 6fr;
   gap: 20px;
+
+  height: 100%;
+}
+
+.main_page {
+  grid-area: m;
 }
 
 a {

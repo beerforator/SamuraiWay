@@ -1,0 +1,42 @@
+.central_content {
+  display: grid;
+  grid-template-columns: 3fr 6fr;
+  gap: 20px;
+
+  height: 100%;
+}
+
+.chat_list {
+  display: flex;
+  flex-direction: column;
+
+  background-color: rgb(130, 97, 158);
+}
+
+.chat_list a {
+  padding: 15px 30px;
+}
+
+.chat_list a.activeChat {
+  background-color: rgb(91, 55, 123);
+}
+
+.messages_list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  
+  justify-content: flex-end;
+
+  background-color: rgb(191, 170, 212);
+  padding: 30px 30px;
+}
+
+.message_item {
+  position: relative;
+  background-color: rgb(237, 231, 244);
+  padding: 15px 20px;
+
+  border-radius: 15px;
+  border-top-left-radius: 0;
+}
