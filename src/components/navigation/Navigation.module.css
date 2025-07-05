@@ -14,7 +14,7 @@
 .sector_nav {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 10px;
 }
 
 .sector_nav a {
@@ -28,4 +28,27 @@
   width: 100%;
   height: 1px;
   background-color: rgb(255, 255, 255);
+}
+
+.friends_online {
+  justify-content: center;
+  gap: 15px;
+}
+
+.friend_item {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+
+  width: fit-content;
+
+  color: rgb(176, 240, 131);
+}
+
+.friend_item img {
+  width: 45px;
+  height: 45px;
+
+  border-radius: 50%;
 }

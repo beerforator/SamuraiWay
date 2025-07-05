@@ -33,10 +33,21 @@
 }
 
 .message_item {
+  width: fit-content;
+
   position: relative;
   background-color: rgb(237, 231, 244);
   padding: 15px 20px;
 
   border-radius: 15px;
   border-top-left-radius: 0;
+
+  align-self: flex-start;
+}
+
+.my_message {
+  border-radius: 15px;
+  border-top-right-radius: 0;
+
+  align-self: flex-end;
 }

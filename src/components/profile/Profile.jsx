@@ -1,7 +1,7 @@
 import m from './Profile.module.css'
 import PostSection from './profile_post_section/PostSection';
 
-const Profile = () => {
+const Profile = (props) => {
   return (
     <main className={m.central_content}>
       <img className={m.profile_background} src="https://s0.rbk.ru/v6_top_pics/media/img/4/62/756576248272624.jpg" alt=""/>
@@ -17,7 +17,7 @@ const Profile = () => {
           </div>
         </div>
       </div>
-      <PostSection />
+      <PostSection postsListDB={props.postsListDB}/>
     </main>
   );
 }

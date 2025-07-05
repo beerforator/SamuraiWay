@@ -1,15 +1,16 @@
 import Post from './post/Post';
 import m from './PostSection.module.css'
 
-const PostSection = () => {
+const PostSection = (props) => {
+  let postsListDB = props.postsListDB
   return (
     <div className={m.page_posts}>
       <h3>My posts</h3>
       <div className={m.post_form}></div>
       <div className={m.post_list}>
-        <Post message='Third post' likes="14"/>
-        <Post message='Dorogoy Dnevnik' likes="20"/>
-        <Post message='First post. Lets start' likes="3"/>
+        {
+          postsListDB.map(post => <Post id={post.id} message={post.message} likes={post.likes} />)
+        }
       </div>
     </div>
   );
