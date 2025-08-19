@@ -1,5 +1,5 @@
 import m from './Profile.module.css'
-import PostSection from './profile_post_section/PostSection';
+import PostSectionContainer from './profile_post_section/PostSectionContainer';
 
 const Profile = (props) => {
 
@@ -18,11 +18,7 @@ const Profile = (props) => {
           </div>
         </div>
       </div>
-      <PostSection
-        postsListDB={props.postsListDB}
-        AddPost={props.AddPost}
-        tAreaStuff={props.tAreaStuff}
-        OnPostTAChange={props.OnPostTAChange} />
+      <PostSectionContainer />
     </main>
   );
 }

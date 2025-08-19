@@ -14,7 +14,7 @@ body {
 
   font-family: monospace;
   font-size: 16px;
-  color: black;
+  color: #00695c;
 
   padding: 20px;
 }
@@ -26,7 +26,7 @@ body {
     "h h"
     "a m";
 
-  grid-template-rows: 60px 1fr;
+  grid-template-rows: 70px 1fr;
   grid-template-columns: 1fr 6fr;
   gap: 20px;
 
@@ -38,7 +38,7 @@ body {
 }
 
 a {
-  color: white;
+  color: #00695c;
   text-decoration: none;
 }
 
