@@ -16,6 +16,7 @@ const Navigation = (props) => {
       <div className={m.sector_nav}>
         <NavLink to='/profile' className={({ isActive }) => isActive ? m.activePage : ""}>Profile</NavLink>
         <NavLink to='/messages' className={({ isActive }) => isActive ? m.activePage : ""}>Messages</NavLink>
+        <NavLink to='/friends' className={({ isActive }) => isActive ? m.activePage : ""}>Friends</NavLink>
         <NavLink to='/news' className={({ isActive }) => isActive ? m.activePage : ""}>News</NavLink>
         <NavLink to='/music' className={({ isActive }) => isActive ? m.activePage : ""}>Music</NavLink>
       </div>

@@ -27,19 +27,20 @@ window.profstate = initialState
 let profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case "ON-POST-TA-CHANGE": {
-            let _state = {...state}
-            _state.textArea = action.payload.text
-            return _state
+            return {
+                ...state,
+                textArea: action.payload.text
+            }
         }
         case "ADD-POST": {
-            let _state = {...state}
+            // Костыль - беру значение напрямую из state *заменить state.textArea -> action.payload.text*
             let id = state.postsListDB[state.postsListDB.length - 1].id + 1
-            // Костыль - беру значение напрямую из state
-            // + не перерисовывается при добавлении пустого
-            let newPost = { id: id, message: _state.textArea, likes: 0 }
-            _state.postsListDB.push(newPost)
-            _state.textArea = ""
-            return _state
+            let newPost = { id: id, message: state.textArea, likes: 0 }
+            return {
+                ...state,
+                postsListDB: [...state.postsListDB, newPost],
+                textArea: ''
+            }
         }
         default: {
             return state

@@ -24,19 +24,20 @@ let initialState = {
 let messagesReducer = (state = initialState, action) => {
     switch (action.type) {
         case "ON-MESSAGE-TA-CHANGE": {
-            let _state = { ...state }
-            _state.textArea = action.payload.text
-            return _state
+            return {
+                ...state,
+                textArea: action.payload.text
+            }
         }
         case "ADD-MESSAGE": {
-            let _state = { ...state }
-            let m_id = state.messagesListDB[state.messagesListDB.length - 1].m_id + 1
             // Костыль - беру значение напрямую из state
-            // + не перерисовывается при добавлении пустого 
-            let newMessage = { c_id: action.payload.c_id, m_id: m_id, message_stuff: _state.textArea, byme: action.payload.byme }
-            _state.messagesListDB.push(newMessage)
-            _state.textArea = ""
-            return _state
+            let m_id = state.messagesListDB[state.messagesListDB.length - 1].m_id + 1
+            let newMessage = { c_id: action.payload.c_id, m_id: m_id, message_stuff: state.textArea, byme: action.payload.byme }
+            return {
+                ...state,
+                messagesListDB: [...state.messagesListDB, newMessage],
+                textArea: ''
+            }
         }
         default: {
             return state

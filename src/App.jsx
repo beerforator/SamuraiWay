@@ -1,4 +1,5 @@
 import './App.css';
+import FriendsContainer from './components/friends/FriendsContainer';
 import Header from './components/header/Header';
 import MessagesContainer from './components/messages/MessagesContainer';
 import Music from './components/music/Music';
@@ -22,6 +23,10 @@ const App = (props) => {
                         <Route
                             path='/messages/*'
                             element={<MessagesContainer />}
+                        />
+                        <Route
+                            path='/friends'
+                            element={<FriendsContainer />}
                         />
                         <Route
                             path='/news'
