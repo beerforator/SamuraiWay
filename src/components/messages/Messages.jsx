@@ -24,7 +24,9 @@ const Messages = (props) => {
             <div className={m.messages_list}>
                 {
                     props.messagesListDB.map(message => <MessageItem
-                        c_id={message.c_id} m_id={message.m_id}
+                        c_id={message.c_id}
+                        m_id={message.m_id}
+                        key={message.m_id}
                         message_stuff={message.message_stuff}
                         byme={message.byme} />)
                 }

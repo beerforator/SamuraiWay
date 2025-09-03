@@ -2,16 +2,12 @@ export const followActionAC = (f_id) => {
     return { type: "FOLLOW", payload: { f_id: f_id } }
 }
 
-let ava = "https://avatars.mds.yandex.net/i?id=9b3771e6b9265a3572ea609cd64978a27aab9849-7092330-images-thumbs&n=13"
+export const setFriendsAC = (f_array) => {
+    return { type: "SET-FRIENDS", payload: { f_array: f_array } }
+}
 
 let initialState = {
-    friendsListDB: [
-        { f_id: 1, name: "Iluha Nafig", about: "Like Raccoons", location: { country: "Russia", city: "Mytischi" }, avatar: ava, isfollowed: true },
-        { f_id: 2, name: "Yulka Yeah", about: "Ozon girl", location: { country: "Russia", city: "Moscow" }, avatar: ava, isfollowed: true },
-        { f_id: 3, name: "Nosorog Blinich", about: "Nasral v podezde", location: { country: "Africa", city: "Niger" }, avatar: ava, isfollowed: false },
-        { f_id: 4, name: "Fufilek", about: "A kak smuvat&", location: { country: "Russia", city: "Voronezh" }, avatar: ava, isfollowed: false }
-    ],
-    pages: 1
+    friendsListDB: []
 }
 
 window.friendsstate = initialState
@@ -23,12 +19,21 @@ let friendsReducer = (state = initialState, action) => {
             stateCopy.friendsListDB = [...state.friendsListDB]
 
             stateCopy.friendsListDB.forEach((f) => {
-                if (f.f_id == action.payload.f_id) {
-                    f.isfollowed = !f.isfollowed
+                if (f.id === action.payload.f_id) {
+                    f.followed = !f.followed
                 }
             })
 
             return stateCopy
+        }
+        case "SET-FRIENDS": {
+            // Костыльный импликатор, поскольку идет двайная перерисовка 
+            // из-за строгого режима. Добавляются дважды те же записи
+            
+            if (state.friendsListDB.length === 0) {
+                return { ...state, friendsListDB: [...state.friendsListDB, ...action.payload.f_array] }
+            }
+            return { ...state }
         }
         default: {
             return state

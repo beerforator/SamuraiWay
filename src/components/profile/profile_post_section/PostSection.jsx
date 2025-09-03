@@ -3,9 +3,14 @@ import m from './PostSection.module.css'
 import React from 'react';
 
 const PostSection = (props) => {
+	let a = props.postsListDB.length
+
 	let addPost = (e) => {
+		let c = props.postsListDB.length
 		props.addPost(e.target.value)
 	}
+
+	let b = props.postsListDB.length
 
 	let onPostTAChange = (e) => {
 		props.onPostTAChange(e.target.value)

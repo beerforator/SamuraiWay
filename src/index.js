@@ -13,6 +13,7 @@ window.state = store_redux.getState()
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
+    // Строгий режим
     <React.StrictMode>
         <Provider store={store_redux}>
             <App />

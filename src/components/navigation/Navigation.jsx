@@ -4,7 +4,7 @@ import m from './Navigation.module.css'
 const Navigation = (props) => {
   let peoplesDB = props.peoplesDB.map((people) => {
     return (
-      <div className={m.friend_item}>
+      <div className={m.friend_item} key={people.id}> 
         <img src="https://avatars.mds.yandex.net/i?id=9b3771e6b9265a3572ea609cd64978a27aab9849-7092330-images-thumbs&n=13" alt="" />
         <p>{people.name}</p>
       </div>
