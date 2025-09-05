@@ -25,7 +25,7 @@ const Navigation = (props) => {
       </div>
       <div className={m.sector_nav + " " + m.friends_online}>
         {
-          peoplesDB
+          //peoplesDB
         }
       </div>
     </nav>

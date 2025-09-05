@@ -1,11 +1,14 @@
 import React from "react"
 import { connect } from "react-redux"
 import Friends from "./Friends"
-import { followActionAC, setFriendsAC } from "../../buisnessData/friendsReducer"
+import { followActionAC, setFriendsAC, setTotalCountAC, setCurrentPageAC } from "../../buisnessData/friendsReducer"
 
 let mapStateToProps = (state) => {
     return {
-        friendsListDB: state.friends.friendsListDB
+        friendsListDB: state.friends.friendsListDB,
+        totalCount: state.friends.totalCount,
+        onPageCount: state.friends.onPageCount,
+        currentPage: state.friends.currentPage
     }
 }
 
@@ -16,6 +19,12 @@ let mapDispatchToProps = (dispatch) => {
         },
         setFriends: (f_array) => {
             dispatch(setFriendsAC(f_array))
+        },
+        setTotalCount: (totalCount) => {
+            dispatch(setTotalCountAC(totalCount))
+        },
+        setCurrentPage: (currentPage) => {
+            dispatch(setCurrentPageAC(currentPage))
         }
     }
 }

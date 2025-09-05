@@ -6,11 +6,20 @@ export const setFriendsAC = (f_array) => {
     return { type: "SET-FRIENDS", payload: { f_array: f_array } }
 }
 
-let initialState = {
-    friendsListDB: []
+export const setTotalCountAC = (totalCount) => {
+    return { type: "SET-TOTAL-COUNT", payload: { totalCount: totalCount } }
 }
 
-window.friendsstate = initialState
+export const setCurrentPageAC = (currentPage) => {
+    return { type: "SET-CURRENT-PAGE", payload: { currentPage: currentPage } }
+}
+
+let initialState = {
+    friendsListDB: [],
+    totalCount: 22,
+    onPageCount: 5,
+    currentPage: 1
+}
 
 let friendsReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -27,13 +36,21 @@ let friendsReducer = (state = initialState, action) => {
             return stateCopy
         }
         case "SET-FRIENDS": {
-            // Костыльный импликатор, поскольку идет двайная перерисовка 
+            // Костыльный импликатор, поскольку идет двойная перерисовка 
             // из-за строгого режима. Добавляются дважды те же записи
-            
-            if (state.friendsListDB.length === 0) {
-                return { ...state, friendsListDB: [...state.friendsListDB, ...action.payload.f_array] }
-            }
-            return { ...state }
+
+            // if (state.friendsListDB.length === 0) {
+            //     return { ...state, friendsListDB: [...state.friendsListDB, ...action.payload.f_array] }
+            // }
+            return { ...state, friendsListDB: [...action.payload.f_array] }
+
+            // return { ...state }
+        }
+        case "SET-TOTAL-COUNT": {
+            return { ...state, totalCount: action.payload.totalCount }
+        }
+        case "SET-CURRENT-PAGE": {
+            return { ...state, currentPage: action.payload.currentPage }
         }
         default: {
             return state

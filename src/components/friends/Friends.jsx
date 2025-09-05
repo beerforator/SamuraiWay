@@ -12,46 +12,38 @@ import axios from 'axios'
 class Friends extends React.Component {
     constructor(props) {
         super(props)
-
-        this.totalCount = 0
-        this.onPageCount = 6
     }
 
     componentDidMount() {
-        axios.get("https://social-network.samuraijs.com/api/1.0/users?count=" + this.onPageCount).then((response) => {
-            this.props.setFriends(response.data.items)
-
-            this.totalCount = response.data.totalCount
-        })
+        this.setFriends()
     }
 
-    pagesCount = () => {
-        let pagesCount = this.totalCount / this.onPageCount
+    setFriends = () => {
+        axios
+            .get("https://social-network.samuraijs.com/api/1.0/users?count=" + this.props.onPageCount + "&page=" + this.props.currentPage)
+            .then((response) => {
+                this.props.setFriends(response.data.items)
 
-        let buttonArr = []
-        while(buttonArr.length <= pagesCount){
-            buttonArr.push(buttonArr.length + 1) 
+                //this.totalCount = response.data.totalCount
+            })
+    }
+
+    pagesNavigation = () => {
+        let pagesCount = Math.ceil(this.props.totalCount / this.props.onPageCount)
+
+        let pages = []
+
+        for (let i = 1; i <= pagesCount; i += 1) {
+            pages.push(i)
         }
 
-        return (
-            buttonArr
-        )
-
+        return pages
     }
 
-    contentOnPage = (i) => {
-        let pagesCount = this.totalCount / this.onPageCount
+    setCurrentPage = (page) => {
+        this.props.setCurrentPage(page)
 
-        let miniArr = []
-        this.props.friendsListDB.forEach(element => {
-            while (miniArr.length != this.onPageCount)
-                miniArr.push(element)
-        })
-
-        axios.get("https://social-network.samuraijs.com/api/1.0/users?count=" + this.onPageCount + "?page=" + i).then((response) => {
-            this.props.setFriends(response.data.items)
-            this.totalCount = response.data.totalCount
-        })
+        this.setFriends()
     }
 
     render() {
@@ -61,7 +53,9 @@ class Friends extends React.Component {
                     this.props.friendsListDB.map(f => <FriendsItem key={f.id} friend={f} followAction={this.props.followAction} />)
                 }
                 <div className={m.page_nav}>
-                    {this.pagesCount().map((i) => <button onClick={this.contentOnPage(i)}>{i}</button>)}
+                    {
+                        this.pagesNavigation().map((i) => <button className={(i == this.props.currentPage) ? m.b_active : ""} onClick={() => this.setCurrentPage(i)} key={i}>{i}</button>)
+                    }
                 </div>
             </div>
         )
